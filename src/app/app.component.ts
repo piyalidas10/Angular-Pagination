@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { constants } from './constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,16 @@ import { constants } from './constants';
 })
 
 export class AppComponent implements OnInit {
-  links = [];
+  links = ['comments', 'photos'];
+  selectedIndex = 0;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.links = Object.keys(constants);
     console.log('links => ', this.links);
+  }
+
+  changeRoute(routeValue) {
+    this.router.navigate([routeValue]);
   }
 }

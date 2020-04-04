@@ -26,8 +26,8 @@ export class ApiService {
     };
   }
 
-  getData(): Observable<any> {
-    const apiURL = `${environment.apiEndpointGet}`;
+  getComments(): Observable<any> {
+    const apiURL = `${environment.apiEndpointComments}`;
     return this.http.get<any>(apiURL, this.RQSTOptions)
       .pipe(
         retry(2),
@@ -35,38 +35,9 @@ export class ApiService {
       );
   }
 
-  getDataWithHeader(): Observable<any> {
-    const apiURL = `${environment.apiEndpointHeaderGet}`;
-    return this.http.get<any>(apiURL)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
-
-  putData(): Observable<any> {
-    const apiURL = `${environment.apiEndpointPut}`;
-    const requestObj = {
-      Id: 1,
-      Title: 'foo',
-      Body: 'bar',
-      UserId: 1
-    };
-    return this.http.put<any>(apiURL, requestObj)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
-
-  postData(): Observable<any> {
-    const apiURL = `${environment.apiEndpointPost}`;
-    const requestObj = {
-      title: 'foo',
-      body: 'bar',
-      userId: 1
-    };
-    return this.http.put<any>(apiURL, requestObj)
+  getPhotos(): Observable<any> {
+    const apiURL = `${environment.apiEndpointPhotos}`;
+    return this.http.get<any>(apiURL, this.RQSTOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

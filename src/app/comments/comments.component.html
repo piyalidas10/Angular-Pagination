@@ -1,0 +1,31 @@
+<h2 class="text-center">Comments</h2>
+
+<div class="row">
+  <div class="col-12">
+    <div class="loader-bg" *ngIf="isLoading">
+      <div class="loader"></div>
+    </div>
+    <table class="table" *ngIf="!isLoading">
+      <tr>
+        <th>postId</th>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>body</th>
+      </tr>
+      <tr *ngFor="let list of commentsLists">
+        <td>{{list.postId}}</td>
+        <td>{{list.id}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.email}}</td>
+        <td>{{list.body}}</td>
+      </tr>
+    </table>
+    <app-pagination *ngIf="!isLoading"
+    [itemsPerPage]="itemsPerPage"
+    [pageSize]="pageSize"
+    [initialPage]="initialPage"
+    [currentPage]="currentPage"
+    (nowInPage)="changeInPage($event)"></app-pagination>
+  </div>
+</div>

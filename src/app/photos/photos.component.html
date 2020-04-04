@@ -1,0 +1,29 @@
+<h2 class="text-center">Photos</h2>
+
+<div class="row">
+  <div class="col-12">
+    <div class="loader-bg" *ngIf="isLoading">
+      <div class="loader"></div>
+    </div>
+    <table class="table" *ngIf="!isLoading">
+      <tr>
+        <th>albumId</th>
+        <th>id</th>
+        <th>title</th>
+        <th>thumbnailUrl</th>
+      </tr>
+      <tr *ngFor="let list of photosLists">
+        <td>{{list.albumId}}</td>
+        <td>{{list.id}}</td>
+        <td>{{list.title}}</td>
+        <td><img src={{list.thumbnailUrl}} width="70" height="70"/></td>
+      </tr>
+    </table>
+    <app-pagination *ngIf="!isLoading"
+    [itemsPerPage]="itemsPerPage"
+    [pageSize]="pageSize"
+    [initialPage]="initialPage"
+    [currentPage]="currentPage"
+    (nowInPage)="changeInPage($event)"></app-pagination>
+  </div>
+</div>

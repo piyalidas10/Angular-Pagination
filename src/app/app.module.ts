@@ -1,32 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
 import { ApiService } from './services/api.service';
-import { httpInterceptorProviders } from './interceptors';
-import { AppRouting } from './app.routing';
+import { CommentsComponent } from './comments/comments.component';
+import { PhotosComponent } from './photos/photos.component';
+import { PaginationComponent } from './pagination/pagination.component';
+
+const routes: Routes = [
+  { path: '', component: CommentsComponent },
+  { path: 'comments', component: CommentsComponent },
+  { path: 'photos', component: PhotosComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CommentsComponent,
+    PhotosComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule,
-    AppRouting
+    RouterModule.forRoot(routes)
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [ApiService, httpInterceptorProviders],
+  providers: [ApiService],
   entryComponents: [],
   bootstrap: [AppComponent]
 })
