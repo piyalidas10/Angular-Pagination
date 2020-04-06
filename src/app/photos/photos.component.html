@@ -21,9 +21,10 @@
     </table>
     <app-pagination *ngIf="!isLoading"
     [itemsPerPage]="itemsPerPage"
-    [pageSize]="pageSize"
     [initialPage]="initialPage"
     [currentPage]="currentPage"
+    [showPagesAtOneTime]="showPagesAtOneTime"
+    [dataLength]="this.totalLists.length"
     (nowInPage)="changeInPage($event)"></app-pagination>
   </div>
 </div>

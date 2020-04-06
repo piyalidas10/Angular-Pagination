@@ -11,9 +11,9 @@ export class CommentsComponent implements OnInit, OnChanges {
   totalLists = [];
   isLoading = true;
   itemsPerPage = 0;
-  pageSize = 0;
   initialPage = 0;
   currentPage = 0;
+  showPagesAtOneTime = 0;
 
   constructor(
     private apiService: ApiService,
@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit, OnChanges {
     this.itemsPerPage = 20;
     this.initialPage = 1;
     this.currentPage = 1;
+    this.showPagesAtOneTime = 5;
     this.getCommentsList();
   }
 
@@ -37,7 +38,6 @@ export class CommentsComponent implements OnInit, OnChanges {
         .subscribe(
           data => {
             this.totalLists = data;
-            this.setPagination(this.totalLists);
             this.isLoading = false;
           },
           err => {
@@ -49,19 +49,6 @@ export class CommentsComponent implements OnInit, OnChanges {
       this.isLoading = false;
       console.log('error => ', error);
     }
-  }
-
-  setPagination(data) {
-    const lengthOfList = data.length;
-    console.log('lengthOfList => ', lengthOfList);
-    const divisor = Math.floor(lengthOfList / this.itemsPerPage);
-    const mod = Math.floor(lengthOfList % this.itemsPerPage);
-    if (mod > 0) {
-      this.pageSize = divisor + 1;
-    } else {
-      this.pageSize = divisor;
-    }
-    console.log('pageSize => ', this.pageSize);
   }
 
   showDataPageWise(currentPage, data) {

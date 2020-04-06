@@ -12,7 +12,7 @@ import { PhotosComponent } from './photos/photos.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
 const routes: Routes = [
-  { path: '', component: CommentsComponent },
+  { path: '', redirectTo: 'comments', pathMatch: 'full'},
   { path: 'comments', component: CommentsComponent },
   { path: 'photos', component: PhotosComponent }
 ];
