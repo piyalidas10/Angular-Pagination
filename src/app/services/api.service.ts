@@ -21,7 +21,7 @@ export class ApiService {
       'Access-Control-Allow-Origin': '*'
     });
     this.RQSTOptions = {
-      // headers: this.headers,
+      headers: this.headers,
       responseType: 'json'
     };
   }

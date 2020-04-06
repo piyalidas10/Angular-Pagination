@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpointComments: 'http://jsonplaceholder.typicode.com/comments',
-  apiEndpointPhotos: 'http://jsonplaceholder.typicode.com/photos'
+  apiEndpointComments: 'https://jsonplaceholder.typicode.com/comments',
+  apiEndpointPhotos: 'https://jsonplaceholder.typicode.com/photos'
 };
 
 /*
