@@ -17,7 +17,13 @@ export class PaginationComponent implements OnInit, OnChanges {
   newPages = [];
   selectedIndex = 0;
   @Output() nowInPage = new EventEmitter<any>();
-  paginationObj = {};
+  paginationObj = {
+    currentPage: 0,
+    totalPages: 0,
+    startPage: 0,
+    endPage: 0,
+    pages: []
+  };
 
   constructor(
     private cdRef: ChangeDetectorRef,

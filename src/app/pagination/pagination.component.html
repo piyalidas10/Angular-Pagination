@@ -4,14 +4,14 @@
   </div>
   <div class="col-12 col-lg-8 col-md-6">
     <ul class="pagination justify-content-end flex-lg-wrap" *ngIf="paginationObj.pages && paginationObj.pages.length">
-      <li class="page-item" *ngIf="paginationObj.currentPage !== 0" [ngClass]="{'active': paginationObj.currentPage === i}"><a class="page-link" (click)="goToPage(0)">First</a></li>
+      <li class="page-item" *ngIf="paginationObj.currentPage !== 0" [ngClass]="{'active': paginationObj.currentPage === 0}"><a class="page-link" (click)="goToPage(0)">First</a></li>
       <li class="page-item" [ngClass]="{'disabled': paginationObj.currentPage === 0}" *ngIf="paginationObj.currentPage === 0"><a class="page-link">First</a></li>
       <li class="page-item" *ngIf="paginationObj.currentPage !== 0"><a class="page-link" (click)="goToPage(paginationObj.currentPage - 1)">Previous</a></li>
       <li class="page-item" [ngClass]="{'disabled': paginationObj.currentPage == 0}" *ngIf="paginationObj.currentPage === 0"><a class="page-link">Previous</a></li>
       <li class="page-item" *ngFor="let page of paginationObj.pages;" [ngClass]="{'active': paginationObj.currentPage === page}"><a class="page-link" (click)="goToPage(page)">{{page + 1}}</a></li>
       <li class="page-item" *ngIf="paginationObj.currentPage !== paginationObj.totalPages - 1"><a class="page-link" (click)="goToPage(paginationObj.currentPage + 1)">Next</a></li>
       <li class="page-item" [ngClass]="{'disabled': paginationObj.totalPages - 1}" *ngIf="paginationObj.currentPage === paginationObj.totalPages - 1"><a class="page-link">Next</a></li>
-      <li class="page-item" [ngClass]="{'active': paginationObj.currentPage === i}"><a class="page-link" (click)="goToPage(paginationObj.totalPages - 1)">Last</a></li>
+      <li class="page-item" [ngClass]="{'disabled': paginationObj.currentPage === paginationObj.totalPages - 1}"><a class="page-link" (click)="goToPage(paginationObj.totalPages - 1)">Last</a></li>
     </ul>
   </div>
 </div>
